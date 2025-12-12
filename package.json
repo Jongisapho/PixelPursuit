@@ -1,0 +1,28 @@
+{
+  "name": "pixelpursuit",
+  "version": "1.0.0",
+  "private":"true",
+  "workspaces":[
+    "backend",
+    "frontend"
+  ],
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "backend:dev": "npm run dev --workspace=backend",
+    "frontend:start": "npm run start --workspace=frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jongisapho/PixelPursuit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Jongisapho/PixelPursuit/issues"
+  },
+  "homepage": "https://github.com/Jongisapho/PixelPursuit#readme"
+}
