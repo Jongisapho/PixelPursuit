@@ -51,19 +51,13 @@ cd pixelpursuit-backend
 npm install
 ```
 
-``bash
-3. Set up environment variables
-```
-
 ```bash
+3. Set up environment variables
 cp .env (private for now)
 ```
 
 ```bash
 4. Run Prisma migrations
-```
-
-```bash
 npx prisma migrate dev --name init
 This will create the tables: User, Job, Application
 ```
