@@ -5,7 +5,7 @@ A modern, full-stack Job Board Application built with **TypeScript**, **Express.
 This platform allows User registration with roles such as **Job Seekers** or **Employers** .
 Users can post jobs, apply to jobs, and ,manage applications - all secured with **JWT** authentication and role-based access control .
 
-## Features
+## Features 🔥
 - User authentication (Register / Login / Logout)
 - Role-based access: `JOBSEEKER`, `EMPLOYER`, `ADMIN` (extensible)
 - Employers can post and manage jobs
@@ -16,7 +16,7 @@ Users can post jobs, apply to jobs, and ,manage applications - all secured with 
 - RESTful API design
 - Prisma ORM with PostgreSQL
 
-## Tech Stack
+## Tech Stack 💎
 
 ### Backend
 - **Node.js** + **Express.js**
@@ -26,11 +26,11 @@ Users can post jobs, apply to jobs, and ,manage applications - all secured with 
 - **bcrypt** – Password hashing
 - **jsonwebtoken** – JWT auth
 
-### Tools
+### Tools ⚒️
 - CORS enabled
 - dotenv for environment variables
 
-## Quick Start
+## Quick Start 🔌
 
 ### Prerequisites
 - Node.js (v18 or higher)
