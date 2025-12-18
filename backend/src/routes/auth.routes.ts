@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
     try {
         const {email, password} = req.body;
         if(!email || !password){
-            return res.status(409).json({
+            return res.status(400).json({
                 message: 'Email and Password required'
             });
         }
@@ -119,6 +119,39 @@ router.post('/login', async (req, res) => {
         console.error('Login error:', error);
         res.status(500).json({
             error: 'Something went wrong'
+        });
+    }
+});
+//GET /api/auth/me - get logged-in user
+router.get('/me', async(req, res) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if(!token){
+        return res.status(401).json({
+            error: 'No token provided'
+        });
+    }
+
+    try{
+        const decoded = jwt.verify(token, JWT_SECRET) as { userId: number};
+        const user = await prisma.user.findUnique({
+            where: {id: decoded.userId},
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                role: true,
+                createdAt: true
+            },
+        });
+        if(!user){
+            return res.status(404).json({
+                error: 'User not found'
+            });
+        }
+        res.json(user);
+    } catch (error){
+        res.status(401).json({
+            error: 'Invalid token'
         });
     }
 });
