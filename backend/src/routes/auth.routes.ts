@@ -1,6 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { protect } from '../middleware/auth.middleware';
 import { prisma } from '../db';
 
 const router = express.Router();
@@ -155,5 +156,13 @@ router.get('/me', async(req, res) => {
         });
     }
 });
+
+// POST /api/auth/logout - Client-side logout confirmation
+router.post('/logout', protect, (req, res) => {
+    res.json({
+        message: 'Logged out successfully',
+        info: "Token removed from client. You are now logged out"
+    })
+})
 
 export default router;
