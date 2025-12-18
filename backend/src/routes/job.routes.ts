@@ -49,7 +49,7 @@ router.post('/', protect, restrictTo('EMPLOYER'), async (req, res) => {
 // GET /api/jobs - Get all jobs (Public - no auth needed)
 router.get('/', async (req, res) => {
     try {
-        const jobs = prisma.job.findMany({
+        const jobs = await prisma.job.findMany({
             include: {
                 poster: {
                     select: {

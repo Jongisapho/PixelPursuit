@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.routes';
+import jobRoutes from './routes/job.routes';
 
 dotenv.config();
 
@@ -10,13 +11,18 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/jobs', jobRoutes); // <- protected + public routes
 
 app.get('/', (req, res) => {
   res.json({
     message: 'PixelPursuit API is running !',
     endpoints: {
-      register: 'POST /api/auth/register',
       health: 'GET /api/health',
+      register: 'POST /api/auth/register',
+      login: 'POST /api/auth/login',
+      me: 'GET /api/auth/me',
+      jobs: 'GET /api/jobs',
+      postJob: 'POST /api/jobs (Employer only)',
     },
   });
 });
