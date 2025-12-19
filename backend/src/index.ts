@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
       me: 'GET /api/auth/me',
       jobs: 'GET /api/jobs',
       postJob: 'POST /api/jobs (Employer only)',
+      deleteJob: 'DELETE /api/jobs',
     },
   });
 });
@@ -35,5 +36,5 @@ const PORT = Number(process.env.PORT) || 5001;
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Register: POST http://localhost:${PORT}/api/auth/register`);
+  console.log(`Health: GET http://localhost:${PORT}/api/health`);
 })

@@ -109,7 +109,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // DELETE /api/jobs/:id - Delete a job (Only the employer who posted it)
-router.delete('/:id', protect, async (req, res) => {
+router.delete('/:id', protect, restrictTo('EMPLOYER'), async (req, res) => {
     try {
         const jobId = Number(req.params.id);
         const userId = req.user!.userId; // From protect middleware
@@ -132,7 +132,7 @@ router.delete('/:id', protect, async (req, res) => {
         }
 
         const applications = await prisma.application.count({
-            where: { id: jobId }
+            where: { jobId: jobId }
         });
 
         if (applications > 0) {
