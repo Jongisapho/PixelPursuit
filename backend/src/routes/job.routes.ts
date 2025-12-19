@@ -63,7 +63,7 @@ router.get('/', async (req, res) => {
         });
 
         res.json(jobs);
-    } catch( error: any){
+    } catch (error: any) {
         res.status(500).json({
             error: 'Failed to get jobs'
         });
@@ -72,12 +72,14 @@ router.get('/', async (req, res) => {
 
 // GET /api/jobs/:id - Get a single job
 router.get('/:id', async (req, res) => {
-    try{
+    try {
+        const jobId = Number(req.params.id);
+
         const job = await prisma.job.findUnique({
             where: {
-                id: Number(req.params.id)
+                id: jobId
             },
-            include:{
+            include: {
                 poster: {
                     select: {
                         id: true,
@@ -85,17 +87,71 @@ router.get('/:id', async (req, res) => {
                         email: true
                     },
                 },
+                _count: {
+                    select: {
+                        applications: true
+                    }, // counts number of applications
+                },
             },
+
         });
-        if(!job){
+        if (!job) {
             res.status(404).json({
                 error: 'Job not found'
             });
         }
         res.json(job);
-    } catch (error){
+    } catch (error) {
         res.status(500).json({
             error: ' Failed to fetch job'
+        });
+    }
+});
+
+// DELETE /api/jobs/:id - Delete a job (Only the employer who posted it)
+router.delete('/:id', protect, async (req, res) => {
+    try {
+        const jobId = Number(req.params.id);
+        const userId = req.user!.userId; // From protect middleware
+
+        const job = await prisma.job.findUnique({
+            where: { id: jobId },
+            select: { id: true, postedBy: true },
+        });
+
+        if (!job) {
+            return res.status(404).json({
+                error: 'Job not found'
+            });
+        }
+
+        if (job.postedBy !== userId) {
+            return res.status(403).json({
+                error: 'You are not authorized to delete this job'
+            });
+        }
+
+        const applications = await prisma.application.count({
+            where: { id: jobId }
+        });
+
+        if (applications > 0) {
+            return res.status(400).json({
+                error: 'Cannot delete job post with active applications'
+            })
+        }
+
+        await prisma.job.delete({
+            where: { id: jobId },
+        });
+
+        res.json({
+            message: 'Job was deleted successfully'
+        });
+    } catch (error: any) {
+        console.error('Job deletion error', error);
+        res.status(500).json({
+            error: 'Failed to delete job'
         });
     }
 });
