@@ -96,7 +96,6 @@ router.post('/login', async (req, res) => {
                 error: 'Invalid credentials'
             });
         }
-
         // Generate JWT (expires in 7 days)
         const token = jwt.sign(
             {
