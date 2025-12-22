@@ -21,7 +21,7 @@ export const protect = async (req: Request, res: Response, next: NextFunction) =
     const authHeader = req.headers.authorization;
 
     if(!authHeader || !authHeader.startsWith('Bearer')){
-        return res.json(401).json({
+        return res.status(401).json({
             error: 'No token provided'
         });
     }
@@ -44,7 +44,7 @@ export const protect = async (req: Request, res: Response, next: NextFunction) =
         next(); // proceed to route handler
     } catch (error){
         return res.status(401).json({
-            error: 'Invalid or expired token'
+            error: 'Invalid or expired token yes'
         });
     }
 };
