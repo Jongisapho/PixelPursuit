@@ -196,7 +196,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   {...loginForm.register("email")}
                   type="email"
                   placeholder="Email"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-400"
                 />
                 {loginForm.formState.errors.email && (
                   <p className="text-red-500 text-sm mt-1">
@@ -210,7 +210,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   {...loginForm.register("password")}
                   type="password"
                   placeholder="Password"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-400"
                 />
                 {loginForm.formState.errors.password && (
                   <p className="text-red-500 text-sm mt-1">
@@ -222,7 +222,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-blue-600 dark:bg-blue-800 rounded-full text-white hover:bg-blue-700 dark:hover:bg-blue-900 disabled:opacity-70 transition-all duration-200 font-medium"
+                className="w-full py-3 bg-blue-600 dark:bg-blue-800 rounded-full text-white hover:bg-blue-700 dark:hover:bg-blue-900 disabled:opacity-70 transition-all duration-500 font-medium"
               >
                 {loading ? "Loading..." : "Login"}
               </button>
@@ -237,7 +237,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   {...registerForm.register("email")}
                   type="email"
                   placeholder="Email"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-500"
                 />
                 {registerForm.formState.errors.email && (
                   <p className="text-red-500 text-sm mt-1">
@@ -251,7 +251,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   {...registerForm.register("password")}
                   type="password"
                   placeholder="Password"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-500"
                 />
                 {registerForm.formState.errors.password && (
                   <p className="text-red-500 text-sm mt-1">
@@ -265,14 +265,14 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   {...registerForm.register("name")}
                   type="text"
                   placeholder="Name (optional)"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-500"
                 />
               </div>
 
               <div>
                 <select
                   {...registerForm.register("role")}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-1 focus:ring-blue-300 bg-white dark:bg-gray-800 transition-all duration-500"
                 >
                   <option value="JOBSEEKER">Job Seeker</option>
                   <option value="EMPLOYER">Employer</option>
@@ -282,7 +282,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-blue-700 dark:bg-blue-800 text-white rounded-full hover:bg-blue-800 dark:hover:bg-blue-900 disabled:opacity-70 transition-all duration-200 font-medium"
+                className="w-full py-3 bg-blue-700 dark:bg-blue-800 text-white rounded-full hover:bg-blue-800 dark:hover:bg-blue-900 disabled:opacity-70 transition-all duration-500 font-medium"
               >
                 {loading ? "Loading..." : "Register"}
               </button>
